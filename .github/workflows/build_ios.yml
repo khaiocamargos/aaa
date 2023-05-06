@@ -1,14 +1,9 @@
-- name: Build iOS app
-  run: |
-    eas login --non-interactive -t ${{ secrets.EXPO_TOKEN }}
-    eas build -p ios --non-interactive
-    eas logout
-
+name: Build iOS App
 
 on:
   push:
     branches:
-      - master # Use 'master' instead of 'main' if that's the branch you're using
+      - master # Use 'main' ou outra branch, conforme necessário
 
 jobs:
   build:
@@ -29,13 +24,9 @@ jobs:
 
     - name: Build iOS app
       run: |
-        eas login -u ${{ secrets.EXPO_CLI_USERNAME }} -p ${{ secrets.EXPO_CLI_PASSWORD }}
+        eas login --non-interactive -t ${{ secrets.EXPO_TOKEN }}
         eas build -p ios --non-interactive
         eas logout
-
-    - name: Download app
-      run: |
-        curl -Lo app.ipa "$(eas build:url --platform ios)"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
