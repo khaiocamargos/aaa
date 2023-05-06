@@ -27,7 +27,7 @@ jobs:
         EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       run: |
         echo "EXPO_TOKEN=$EXPO_TOKEN" > .env
-        eas build -p ios --non-interactive --profile development
+        eas build -p ios --non-interactive --profile development --skip-credentials-check
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
