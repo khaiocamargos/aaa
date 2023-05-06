@@ -23,10 +23,11 @@ jobs:
         npm install -g eas-cli
 
     - name: Build iOS app
+      env:
+        EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       run: |
-        eas login --non-interactive -t ${{ secrets.EXPO_TOKEN }}
-        eas build -p ios --non-interactive
-        eas logout
+        echo "EXPO_TOKEN=$EXPO_TOKEN" > .env
+        eas build -p ios --non-interactive --profile development
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
