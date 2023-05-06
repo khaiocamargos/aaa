@@ -1,4 +1,9 @@
-name: Build iOS App
+- name: Build iOS app
+  run: |
+    eas login --non-interactive -t ${{ secrets.EXPO_TOKEN }}
+    eas build -p ios --non-interactive
+    eas logout
+
 
 on:
   push:
