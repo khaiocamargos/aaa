@@ -3,7 +3,7 @@ name: Build iOS App
 on:
   push:
     branches:
-      - main # Or use 'master' or any other branch you want to trigger the build on
+      - master # Or use 'master' or any other branch you want to trigger the build on
 
 jobs:
   build:
